@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  zsh-syntax-check:
+    name: Zsh Syntax Validation
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Validate Zsh syntax
+        run: |
+          echo "==> Checking Zsh file syntax..."
+          find . -type f \( -name "*.zsh" -o -name ".zshrc" \) ! -path "*/.git/*" | while read -r file; do
+            zsh -n "$file" || exit 1
+          done
+          echo "==> All Zsh scripts passed syntax check!"
+
+  symlink-dry-run:
+    name: Symlink Script Dry Run
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Test symlink script in temporary directory
+        run: |
+          chmod +x create_symlinks.zsh
+          TEMP_HOME=$(mktemp -d)
+          # Ensure target parent directories exist
+          mkdir -p "$TEMP_HOME/.gradle"
+          mkdir -p "$TEMP_HOME/.ssh"
+          DOTFILES=$(pwd) HOME=$TEMP_HOME ./create_symlinks.zsh
+
+  brewfile-test:
+    name: Brewfile Test
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      # Optional: Speed up brew by skipping auto-updates if you don't need the absolute latest versions
+      - name: Configure Homebrew Environment
+        run: |
+          echo "HOMEBREW_NO_AUTO_UPDATE=1" >> $GITHUB_ENV
+
+      - name: Check Brewfile syntax
+        run: |
+          chmod +x brew_install_formulae.zsh
+          TEMP_HOME=$(mktemp -d)
+          DOTFILES=$(pwd) HOME=$TEMP_HOME ./brew_install_formulae.zsh

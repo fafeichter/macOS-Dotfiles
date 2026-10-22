@@ -1,0 +1,3 @@
+brew "wget"
+brew "htop"
+brew "telnet"

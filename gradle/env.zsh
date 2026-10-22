@@ -1,0 +1,1 @@
+export GRADLE_OPTS="-Xmx32768m"

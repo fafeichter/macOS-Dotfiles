@@ -1,0 +1,68 @@
+[user]
+	name = Fabian Feichter
+	email = me@fabian-feichter.at
+
+[color]
+	ui = true
+	diff = auto
+	interactive = auto
+	status = auto
+	branch = auto
+
+[pull]
+	rebase = true
+
+[core]
+	quotepath = false
+	excludesfile = /Users/fabian/.gitignore_global
+	autocrlf = input
+	editor = nano
+
+[diff]
+	tool = diffmerge
+
+[alias]
+	# status
+	s = status
+
+	# branch
+	b = branch
+
+	# add
+	a = add *
+
+	# commit
+	ci = commit
+	cia = commit --amend --no-edit
+	cim = commit -m
+
+	# checkout
+	co = checkout
+	cob = !git checkout -b $1 && git push -u origin
+	com = !git checkout $(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+
+	# pull
+	p = pull origin
+
+	# fetch
+	f = fetch --prune --prune-tags -f
+
+	# rebase
+	rb = !git co $(git remote show origin | sed -n '/HEAD branch/s/.*: //p') && git p && git f && git co - && git rebase $(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+	rbc = rebase --continue
+	rbs = rebase --skip
+	rba = rebase --abort
+
+	# cherry-pick
+	cpc = cherry-pick --continue
+	cps = cherry-pick --skip
+	cpa = cherry-pick --abort
+
+	# stash
+	sa = stash apply
+
+	# log
+	lg = log --graph --pretty=format:'%Cred%h%Creset - %Cgreen(%cr)%C(yellow)%d%Creset %s %C(bold magenta)<%an>%Creset' --abbrev-commit --date=relative -10
+
+[init]
+	defaultBranch = main
