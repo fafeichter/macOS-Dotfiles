@@ -6,7 +6,7 @@ My personal macOS dotfiles.
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/.dotfiles.git ~/.dotfiles
+   git clone git@github.com:fafeichter/macOS-Dotfiles.git ~/.dotfiles
    cd ~/.dotfiles
    ```
 
@@ -22,9 +22,8 @@ My personal macOS dotfiles.
    ./create_symlinks.zsh
    ```
 
-4 **Install Homebrew Formulae:**
-Run the Homebrew installation script which automatically processes all modular `Brewfile`s across the repository:
-
+4. **Install Homebrew Formulae:**
+   Run the Homebrew installation script which automatically processes all modular `Brewfile`s across the repository:
    ```bash
    ./brew_install_formulae.zsh
    ```
