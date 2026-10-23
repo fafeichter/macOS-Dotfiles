@@ -3,11 +3,10 @@ set -e
 
 DOTFILES="${DOTFILES:-$HOME/.dotfiles}"
 
-echo "==> Updating Homebrew..."
 brew update
 
 echo "==> Installing packages from Brewfiles..."
-find "$DOTFILES" -name "Brewfile" | while read -r brewfile; do
+find "$DOTFILES/" -name "Brewfile" | while read -r brewfile; do
   dir=$(dirname "$brewfile")
   echo "--------------------------------------------------"
   echo "Processing Brewfile in: $dir"

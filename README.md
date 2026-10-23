@@ -6,8 +6,8 @@ My personal macOS dotfiles.
 
 1. **Clone the repository:**
    ```bash
-   git clone git@github.com:fafeichter/macOS-Dotfiles.git ~/.dotfiles
-   cd ~/.dotfiles
+   git clone git@github.com:fafeichter/macOS-Dotfiles.git
+   ln -sfn  "$HOME/Projects/macOS-Dotfiles" "$HOME/.dotfiles"
    ```
 
 2. **Make scripts executable:**
