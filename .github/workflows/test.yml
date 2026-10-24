@@ -51,6 +51,7 @@ jobs:
 
   brewfiles-script-run:
     name: Brewfiles Script Run
+    needs: [ brewfile-syntax-validation ]
     runs-on: macos-latest
     steps:
       - name: Checkout repository
