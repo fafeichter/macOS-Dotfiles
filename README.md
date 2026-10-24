@@ -1,6 +1,6 @@
 # macOS-Dotfiles
 
-My personal macOS dotfiles.
+My personal macOS dotfiles and configs.
 
 ## 🚀 Quick Setup (New Machine)
 
