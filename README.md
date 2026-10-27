@@ -1,3 +1,5 @@
+[![CI](https://github.com/fafeichter/macOS-Dotfiles/actions/workflows/test.yml/badge.svg)](https://github.com/fafeichter/macOS-Dotfiles/actions/workflows/test.yml)
+
 # macOS-Dotfiles
 
 My personal macOS dotfiles and configs.
